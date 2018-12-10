@@ -67,42 +67,60 @@ int main(){
 
 
 	for (int j = 1; j < 319; j++){
-		if (abs(obraz[199][j] - obraz[199][j + 1]) >= 128
-			|| abs(obraz[199][j] - obraz[199][j - 1]) >= 128
-			|| abs(obraz[199][j] - obraz[198][j]) >= 128) count++;
-		if (abs(obraz[0][j] - obraz[0][j + 1]) >= 128
-			|| abs(obraz[0][j] - obraz[0][j - 1]) >= 128
-			|| abs(obraz[0][j] - obraz[1][j]) >= 128) count++;
+		if (abs(obraz[199][j] - obraz[199][j + 1]) >128
+			|| abs(obraz[199][j] - obraz[199][j - 1]) >128
+			|| abs(obraz[199][j] - obraz[198][j]) >128) count++;
+		if (abs(obraz[0][j] - obraz[0][j + 1]) >128
+			|| abs(obraz[0][j] - obraz[0][j - 1]) >128
+			|| abs(obraz[0][j] - obraz[1][j]) >128) count++;
 	}
 	for (int i = 1; i < 199; i++){
-		if (abs(obraz[i][0] - obraz[i-1][0]) >= 128
-			|| abs(obraz[i][0] - obraz[i+1][0]) >= 128
-			|| abs(obraz[i][0] - obraz[i][1]) >= 128) count++;
-		if (abs(obraz[0][319] - obraz[i+1][319]) >= 128
-			|| abs(obraz[0][319] - obraz[i-1][319]) >= 128
-			|| abs(obraz[0][319] - obraz[i][318]) >= 128) count++;
+		if (abs(obraz[i][0] - obraz[i-1][0]) >128
+			|| abs(obraz[i][0] - obraz[i+1][0]) >128
+			|| abs(obraz[i][0] - obraz[i][1]) >128) count++;
+		if (abs(obraz[0][319] - obraz[i+1][319]) >128
+			|| abs(obraz[0][319] - obraz[i-1][319]) >128
+			|| abs(obraz[0][319] - obraz[i][318]) >128) count++;
 	}
-	if (abs(obraz[0][0] - obraz[0][0 + 1]) >= 128 || abs(obraz[0][0] - obraz[0 + 1][0]) >= 128){
+	if (abs(obraz[0][0] - obraz[0][0 + 1]) >128 || abs(obraz[0][0] - obraz[0 + 1][0]) >128){
 		count++;
 	}
-	if (abs(obraz[0][319] - obraz[0][319 - 1]) >= 128 || abs(obraz[0][319] - obraz[0 + 1][319]) >= 128){
+	if (abs(obraz[0][319] - obraz[0][319 - 1]) >128 || abs(obraz[0][319] - obraz[0 + 1][319]) >128){
 		count++;
 	}
-	if (abs(obraz[199][0] - obraz[199][0 + 1]) >= 128 || abs(obraz[199][0] - obraz[199 - 1][0]) >= 128){
+	if (abs(obraz[199][0] - obraz[199][0 + 1]) >128 || abs(obraz[199][0] - obraz[199 - 1][0]) >128){
 		count++;
 	}
-	if (abs(obraz[199][319] - obraz[199][319- 1]) >= 128 || abs(obraz[199][319] - obraz[199 + 1][319]) >= 128){
+	if (abs(obraz[199][319] - obraz[199][319- 1]) >128 || abs(obraz[199][319] - obraz[199 + 1][319]) >128){
 		count++;
 	}
 	for (int i = 1; i < 199; i++){
 		for (int j = 1; j < 319; j++){
-			if (abs(obraz[i][j] - obraz[i][j - 1]) >= 128
-				|| abs(obraz[i][j] - obraz[i][j + 1]) >= 128
-				|| abs(obraz[i][j] - obraz[i-1][j]) >= 128
-				||abs(obraz[i][j] - obraz[i+1][j]) >= 128)count++;
+			if (abs(obraz[i][j] - obraz[i][j - 1]) >128
+				|| abs(obraz[i][j] - obraz[i][j + 1]) >128
+				|| abs(obraz[i][j] - obraz[i-1][j]) >128
+				||abs(obraz[i][j] - obraz[i+1][j]) >128)count++;
 		}
 	}
-	wynik6 << "6.3" << endl << endl << count;
+	wynik6 << "6.3" << endl << endl << count <<endl;
+	
+	///////////////////////////////////////////////////////////////////////////
+	int curr;
+	max = 0;
+	
+	for (int i = 0; i < 320; i++){
+		curr = obraz[0][i];
+		count = 1;
+		for (int j = 1; j < 200; j++){
+			if (obraz[j][i] == curr)count++;
+			else{
+				if (max < count)max = count;
+				curr = obraz[j][i];
+				count = 1;
+			}
+		}
+	}
+	wynik6 << "6.4" << endl << max;
 	wynik6.close();
 	return 0;
 }

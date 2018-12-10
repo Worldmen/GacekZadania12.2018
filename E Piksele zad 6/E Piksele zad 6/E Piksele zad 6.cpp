@@ -47,23 +47,32 @@ int main(){
 	//ZLE!!!!!!!!!!!!
 	for (int i = 0; i < 199; i++){
 		for (int j = 0; j < 319; j++){
-			if (abs(obraz[i][j] - obraz[i][j + 1]) >= 128 || abs(obraz[i][j] - obraz[i + 1][j]) >= 128){
+			if (abs(obraz[i][j] - obraz[i][j + 1]) >= 128 /*|| abs(obraz[i][j] - obraz[i + 1][j]) >= 128*/){
 				count++;
 			}
+			if(abs(obraz[i][j] - obraz[i + 1][j]) >= 128)count++;
 		}
-		if (abs(obraz[i][319] - obraz[i][318]) >= 128 || abs(obraz[i][319] - obraz[i + 1][319]) >= 128){
+		if (abs(obraz[i][319] - obraz[i][318]) >= 128 /*|| abs(obraz[i][319] - obraz[i + 1][319]) >= 128*/){
+			count++;
+		}
+		if (abs(obraz[i][319] - obraz[i + 1][319]) >= 128){
 			count++;
 		}
 	}
 	for (int j = 0; j < 319; j++){
-		if (abs(obraz[199][j] - obraz[199][j + 1]) >= 128 || abs(obraz[199][j] - obraz[198][j]) >= 128){
+		if (abs(obraz[199][j] - obraz[199][j + 1]) >= 128 /*|| abs(obraz[199][j] - obraz[198][j]) >= 128*/){
+			count++;
+		}
+		if (abs(obraz[199][j] - obraz[198][j]) >= 128){
 			count++;
 		}
 	}
-	if (abs(obraz[199][319] - obraz[199][318]) >= 128 || abs(obraz[199][319] - obraz[199 - 1][319]) >= 128){
+	if (abs(obraz[199][319] - obraz[199][318]) >= 128 /*|| abs(obraz[199][319] - obraz[199 - 1][319]) >= 128*/){
 		count++;
 	}
-
+	if (abs(obraz[199][319] - obraz[199 - 1][319]) >= 128){
+		count++;
+	}
 	wynik6 << "6.3" << endl << endl << count;
 	wynik6.close();
 	return 0;

@@ -78,9 +78,9 @@ int main(){
 		if (abs(obraz[i][0] - obraz[i-1][0]) >128
 			|| abs(obraz[i][0] - obraz[i+1][0]) >128
 			|| abs(obraz[i][0] - obraz[i][1]) >128) count++;
-		if (abs(obraz[0][319] - obraz[i+1][319]) >128
-			|| abs(obraz[0][319] - obraz[i-1][319]) >128
-			|| abs(obraz[0][319] - obraz[i][318]) >128) count++;
+		if (abs(obraz[i][319] - obraz[i+1][319]) >128
+			|| abs(obraz[i][319] - obraz[i-1][319]) >128
+			|| abs(obraz[i][319] - obraz[i][318]) >128) count++;
 	}
 	if (abs(obraz[0][0] - obraz[0][0 + 1]) >128 || abs(obraz[0][0] - obraz[0 + 1][0]) >128){
 		count++;
@@ -91,7 +91,7 @@ int main(){
 	if (abs(obraz[199][0] - obraz[199][0 + 1]) >128 || abs(obraz[199][0] - obraz[199 - 1][0]) >128){
 		count++;
 	}
-	if (abs(obraz[199][319] - obraz[199][319- 1]) >128 || abs(obraz[199][319] - obraz[199 + 1][319]) >128){
+	if (abs(obraz[199][319] - obraz[199][319- 1]) >128 || abs(obraz[199][319] - obraz[199 - 1][319]) >128){
 		count++;
 	}
 	for (int i = 1; i < 199; i++){
